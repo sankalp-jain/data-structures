@@ -1,25 +1,21 @@
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
 int main(){
-	int n;
-	cin >> n;
-	int a[n];
+	int a[] = {19, 7, 0, 3, 18, 15, 12, 6, 1, 8,11, 10, 9, 5, 13, 16, 2, 14, 17, 4};
+	int n = sizeof(a) / sizeof(a[0]);
+
+	int i = 0;
+	while (i < n){
+		if  (a[i] == i || a[i] == -1)
+			i++;
+		else{
+			int t = a[i];
+			a[i] = a[t];
+			a[t] = t;
+		}
+	}
 	for (int i = 0; i < n; i++)
-		cin >> a[i];
-	int start = 0;
-	int end = n - 1;
-	while(start < end){
-		int temp = a[start];
-		a[start] = a[end];
-		a[end] = temp;
-		start++;
-		end--;
-	}
-
-	for (int i = 0; i < n; i++){
 		cout << a[i] << " ";
-	}
-
+	return 0;
 }
